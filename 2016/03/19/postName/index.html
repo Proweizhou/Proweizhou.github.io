@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档 | zhou&#39;s blog</title>
+  <title>postName | zhou&#39;s blog</title>
   <meta name="author" content="zhou">
   
   <meta name="description" content="Walk steps step by step">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="postName"/>
   <meta property="og:site_name" content="zhou&#39;s blog"/>
 
   
@@ -68,52 +68,73 @@
 </header>
     
       <div id="content" class="inner">
-          <div id="main-col" class="alignleft"><div id="wrapper">
+          <div id="main-col" class="alignleft"><div id="wrapper"><article class="[layout]">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-03-19T06:08:40.000Z"><a href="/2016/03/19/postName/">Mar 19 2016</a></time>
+        
+  
+    <h1 class="title">postName</h1>
+  
 
-<h2 class="archive-title">归档</h2>
+    </header>
 
-
-  <div class="archive">
-     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-03-19T07:22:50.770Z"><a href="/2016/03/19/hello-world/">Mar 19 2016</a></time>
-            
-              <h1 class="title"><a href="/2016/03/19/hello-world/">Hello World</a></h1>
-            
-<!--              -->
-          </header>
-          <div class='archive-tags'>
-            
-          </div>
-        </div>
-      </article>
-     
-      <article class="[layout]">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2016-03-19T06:08:40.000Z"><a href="/2016/03/19/postName/">Mar 19 2016</a></time>
-            
-              <h1 class="title"><a href="/2016/03/19/postName/">postName</a></h1>
-            
-<!--              -->
-          </header>
-          <div class='archive-tags'>
-            
-          </div>
-        </div>
-      </article>
+    <div class="entry">
+         <!--02-->
+        <div id="toc" class="toc-article">
+	<div class="toc-title">目录</div>
+	
+</div>
       
+        <p>POJ 2777��Count Color�� </p>
+<p>#include<iostream>a</iostream></p>
+<p>#include<string.h></string.h></p>
+<p>#include<algorithm></algorithm></p>
+<p>#include<stdio.h><br>using namespace std;</stdio.h></p>
+<p>struct node{<br>    int a,b,color;<br>}s[400000];<br>int h[60];<br>int Build(int x,int y,int num){<br>    s[num].a=x; s[num].b=y;<br>    s[num].color=1;<br>    if(x==y)<br>        return 0;<br>    else{<br>        Build(x,(x+y)/2,num+num);<br>        Build((x+y)/2+1,y,num+num+1);<br>    }<br>}</p>
+<p>int modify(int x,int y,int num,int color){<br>    if(x==s[num].a&amp;&amp;y==s[num].b){<br>        s[num].color=color;<br>        return 0;<br>    }<br>    if(s[num].color==color)<br>        return 0;<br>    if(s[num].color&gt;0){<br>        s[num+num].color=s[num+num+1].color=s[num].color;<br>        s[num].color=0;<br>    }<br>    if(y&lt;=(s[num].a+s[num].b)/2)<br>        modify(x,y,num+num,color);<br>    else if(x&gt;(s[num].a+s[num].b)/2)<br>        modify(x,y,num+num+1,color);<br>    else{<br>        modify(x,(s[num].a+s[num].b)/2,num+num,color);<br>        modify((s[num].a+s[num].b)/2+1,y,num+num+1,color);<br>    }<br>}</p>
+<p>int getsum(int x,int y,int num){<br>    if(s[num].color&gt;0){<br>        h[s[num].color]=1;<br>        return 0;<br>    }<br>    else{<br>        if(y&lt;=(s[num].a+s[num].b)/2)<br>            getsum(x,y,num+num);<br>        else if(x&gt;(s[num].a+s[num].b)/2)<br>            getsum(x,y,num+num+1);<br>        else{<br>            getsum(x,(s[num].a+s[num].b)/2,num+num);<br>            getsum((s[num].a+s[num].b)/2+1,y,num+num+1);<br>        }<br>    }<br>}</p>
+<p>int main(){<br>    int l,t,cas,i,j,sum;<br>    int x,y,color;<br>    char c;<br>    scanf(“%d %d %d”,&amp;l,&amp;t,&amp;cas);<br>        memset(h,0,sizeof(h));<br>        Build(1,l,1);<br>        for(j=1;j&lt;=cas;j++){<br>            sum=0;<br>            cin&gt;&gt;c;<br>            if(‘P’==c){<br>                scanf(“%d %d”,&amp;x,&amp;y);<br>                getsum(x,y,1);<br>                for(i=1;i&lt;=t;i++)<br>                    cout&lt;&lt;h[i];<br>                cout&lt;&lt;endl;<br>                for(i=1;i&lt;=t;i++)<br>                    sum+=h[i];<br>                printf(“%d\n”,sum);<br>                memset(h,0,sizeof(h));<br>            }<br>            else if(‘C’==c){<br>                scanf(“%d %d %d”,&amp;x,&amp;y,&amp;color);<br>                modify(x,y,1,color);<br>            }<br>        }<br>    return 0;<br>}</p>
+
+      
+    </div>
+    <footer>
+<!--        -->
+        
+  
+  <div class="categories">
+    <a href="/categories/good/">good</a>
   </div>
-  
-<nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+
+        
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!--        -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+<!--   <h1 class="title">留言</h1> -->
+
+
+</section>
+
+
+
+</div></div>
           <aside id="sidebar" class="alignright">
   
 <div class="widget tag">
